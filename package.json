@@ -1,0 +1,22 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "display a stock list of items and allow a customer to select an item and a quantity for the item. Update database.",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamienVA/bamazon.git"
+  },
+  "author": "Damien Aponte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamienVA/bamazon/issues"
+  },
+  "homepage": "https://github.com/DamienVA/bamazon#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
