@@ -1,3 +1,5 @@
+const root = require('./root');
+
 module.exports = {
     host: 'localhost',
   

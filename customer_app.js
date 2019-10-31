@@ -1,20 +1,18 @@
 const inquirer = require('inquirer');
 const mysql = require('promise-mysql');
-const config = require('./config');
-const
+const config = require('./config.js');
+const Table = require('cli-table2');
+require('console.table');
 
 async function run() {
-    const connection = await mysql.createConnection(config);
-    query(connect);
-    connect.query(`SELECT * FROM products`, (err, res) => {
-      if (err) throw err;
+  const connection = await mysql.createConnection(config);
 
-      
-    })
-}
+  await displayTable(connection);
+  connection.end();
+};
 
-async function custPrompt() {
-    console.log('Welcome to Bamazon!');
+async function custPrompt(connection) {
+  console.log('Welcome to Bamazon!');
   return inquirer.prompt([
     {
       name: 'first',
@@ -23,6 +21,15 @@ async function custPrompt() {
       choices: ['Order', 'Exit']
     },
   ]);
-}
+};
 
-custPrompt()
+async function displayTable(connection) {
+  return connection.query(`SELECT * FROM products`, (err, res) => {
+    if (err) throw err;
+    console.log('Selecting all products...\n');
+    console.table(res);
+    custPrompt();
+  });
+};
+
+run();
